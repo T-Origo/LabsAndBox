@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:labs/colors.dart';
+import 'package:labs/signup.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -8,90 +10,95 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  bool isSignIn = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff410056),
-      body: Container(
-          constraints: const BoxConstraints.expand(),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("img/bg.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: SingleChildScrollView(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      const Text(
-                        "Labs N Box",
-                        style: TextStyle(
-                          fontSize: 36,
-                          color: Colors.white,
-                          fontFamily: "NotoSans",
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Container(
-                            height: MediaQuery.of(context).size.height * 0.65,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 25, 10, 0),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: const [
-                                      Text(
-                                        "Sign In",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Color(0xff410056),
-                                        ),
-                                      ),
-                                      Text(
-                                        "Sign Up",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Color(0xff410056),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            )),
-                      )
-                    ],
-                  ),
+      backgroundColor: Kolors.backgroundColor.withOpacity(.85),
+      body: Stack(
+        children: [
+          Positioned(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("img/bg.png"),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-          )),
+          ),
+          Positioned(
+            child: Center(
+              child: Container(
+                height: 380,
+                width: MediaQuery.of(context).size.width - 40,
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 15,
+                      spreadRadius: 5,
+                    )
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: Color(0xffd8d8d8),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                            ),
+                          ),
+                          child: Column(
+                            children: const [
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                  color: Kolors.textColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: Color(0xffd8d8d8),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                            ),
+                          ),
+                          child: Column(
+                            children: const [
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                  color: Kolors.textColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
