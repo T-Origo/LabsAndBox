@@ -53,12 +53,23 @@ class _SignInState extends State<SignIn> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text("Sign In"),
-                              Text("Sign Up"),
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(45, 35, 51, 0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: const [
+                                Text(
+                                  "Sign In",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Color(0xff410056),
+                                  ),
+                                ),
+                                Text("Sign Up"),
+                              ],
+                            ),
                           ),
                         ),
                       )
