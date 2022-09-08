@@ -67,7 +67,14 @@ class _SignInState extends State<SignIn> {
                                     color: Color(0xff410056),
                                   ),
                                 ),
-                                Text("Sign Up"),
+                                Text(
+                                  "Sign In",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Color(0xff410056),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
