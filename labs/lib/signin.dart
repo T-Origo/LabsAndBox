@@ -57,7 +57,7 @@ class _SignInState extends State<SignIn> {
                       color: Colors.black.withOpacity(0.3),
                       blurRadius: 15,
                       spreadRadius: 5,
-                    )
+                    ),
                   ],
                 ),
                 child: Column(
@@ -112,80 +112,7 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(
                       height: 30,
                     ),
-                    Form(
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: "Registered Email ID/ Phone Number",
-                              hintStyle: TextStyle(
-                                fontFamily: "NotoSans",
-                                color: Kolors.textColor,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: "Enter your password",
-                              hintStyle: TextStyle(
-                                fontFamily: "NotoSans",
-                                color: Kolors.textColor,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(10),
-                                ),
-                                borderSide: BorderSide(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Kolors.buttonColor,
-                            ),
-                            onPressed: () {},
-                            child: const Text(
-                              "Sign In",
-                              style: TextStyle(
-                                fontFamily: "NotoSans",
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    buildSignupSection(),
                   ],
                 ),
               ),
@@ -199,13 +126,24 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Made in"),
+                    children: const [
+                      Text(
+                        "Made in",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
                       Icon(
-                        Icons.heart_broken,
+                        Icons.heart_broken_outlined,
                         color: Colors.white,
                       ),
-                      Text("with Science")
+                      Text(
+                        "with Science",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      )
                     ],
                   ),
                 ],
@@ -213,6 +151,86 @@ class _SignInState extends State<SignIn> {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Form buildSignupSection() {
+    return Form(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: buildInputField(
+              "Registered Email ID/ Phone Number",
+              false,
+              false,
+              false,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: buildInputField(
+              "Enter your email",
+              true,
+              false,
+              false,
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Kolors.buttonColor,
+            ),
+            onPressed: () {},
+            child: const Text(
+              "Sign In",
+              style: TextStyle(
+                fontFamily: "NotoSans",
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  TextFormField buildInputField(
+    String hintText,
+    bool isEmail,
+    bool isPassword,
+    bool isPhoneNumber,
+  ) {
+    return TextFormField(
+      obscureText: isPassword,
+      keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          fontFamily: "NotoSans",
+          color: Kolors.textColor,
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
+        ),
       ),
     );
   }
