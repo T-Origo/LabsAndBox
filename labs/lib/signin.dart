@@ -32,6 +32,7 @@ class _SignInState extends State<SignIn> {
             child: Center(
               child: Container(
                 height: 380,
+                padding: const EdgeInsets.all(15),
                 width: MediaQuery.of(context).size.width - 40,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
@@ -50,19 +51,20 @@ class _SignInState extends State<SignIn> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xffd8d8d8),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                            ),
-                          ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignIn = true;
+                            });
+                          },
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
                                 "Sign In",
                                 style: TextStyle(
-                                  color: Kolors.textColor,
+                                  color: isSignIn
+                                      ? Kolors.buttonColor
+                                      : Kolors.textColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 23,
                                 ),
@@ -70,19 +72,20 @@ class _SignInState extends State<SignIn> {
                             ],
                           ),
                         ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xffd8d8d8),
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(15),
-                            ),
-                          ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignIn = false;
+                            });
+                          },
                           child: Column(
-                            children: const [
+                            children: [
                               Text(
-                                "Sign In",
+                                "Sign up",
                                 style: TextStyle(
-                                  color: Kolors.textColor,
+                                  color: isSignIn
+                                      ? Kolors.textColor
+                                      : Kolors.buttonColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 23,
                                 ),
